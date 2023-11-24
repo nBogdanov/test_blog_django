@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>
+      {% block title %}
+
+      {% endblock %}
+    </title>
+
+    <!-- INCLUDE CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- НАВИГАЦИЯ ВЕЗДЕ ОДИНАКОВАЯ -->
+    {% include './block/navbar.html' %}
+
+    <!-- СЛАЙДЕР ТОЛЬКО НА ГЛАВНОЙ, ГДЕ-ТО ВМЕСТО НЕГО ПРОСТО ХЭДЭР, А ГДЕ-ТО ЕГО НЕТ -->
+    {% block header %}
+    {% endblock %}
+
+    <!-- ОСНОВНОЙ БЛОК КОНТЕНТА. ВЕЗДЕ РАЗНОЕ КОЛ-ВО КОЛОНОК -->
+    <div class="container">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+
+    <!-- ПАГИНАЦИЯ ГДЕ-ТО ЕСТЬ А ГДЕ-ТО НЕТУ -->
+    {% block pagination %}
+
+    {% endblock %}
+
+    <!-- ФУТЕР ВЕЗДЕ ОДИНАКОВЫЙ -->
+    {% include 'myblog/block/footer.html' %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>
