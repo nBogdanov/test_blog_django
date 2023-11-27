@@ -17,125 +17,62 @@
     <h1 class="text-center">Последние записи блога</h1>
     <div class="container">
       <div class="row">
-        <div class="col-md-4 d-flex">
-          <div class="card mb-4">
-            <img src="{% static 'img/card_1.jpg' %}" alt="" class="card-img-top" />
-            <div class="card-body">
-              <h4 class="card-text">Владение BMW дорогое?</h4>
-              <div class="card-text">Да, BMW - это премиальный бренд, и владение им может быть дороже, чем некоторыми другими марками автомобилей.</div>
-            </div>
-            <div class="card-footer">
-              <div class="d-flex justify-content-between align-items-center mt 3">
-                <small class="text-muted">22.10.2023</small>
-                <a href="#" class="btn btn btn-outline-secondary">Подробнее</a>
+        {% for post in page_obj %}
+          <div class="col-md-4 d-flex">
+            <div class="card mb-4">
+              <img src="media/{{ post.image }}" alt="" class="card-img-top" />
+              <div class="card-body">
+                <h4 class="card-text">{{ post.h1 }}</h4>
+                <div class="card-text">{{ post.description|safe }}</div>
+              </div>
+              <div class="card-footer">
+                <div class="d-flex justify-content-between align-items-center mt 3">
+                  <small class="text-muted">{{ post.created_at }}</small>
+                  <a href="{{ post.url }}" class="btn btn btn-outline-secondary">Подробнее</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="col-md-4 d-flex">
-          <div class="card mb-4">
-            <img src="{% static 'img/2013_McLaren_MP4-12C_card.jpg' %}" alt="" class="card-img-top" />
-            <div class="card-body">
-              <h4 class="card-text">Обзор McLaren MP4-12C</h4>
-              <div class="card-text">Это потрясающий суперкар, воплощающий в себе передовые технологии, стильный дизайн и непревзойденную производительность.</div>
-            </div>
-            <div class="card-footer">
-              <div class="d-flex justify-content-between align-items-center mt 3">
-                <small class="text-muted">22.10.2023</small>
-                <a href="#" class="btn btn btn-outline-secondary">Подробнее</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 d-flex">
-          <div class="card mb-4">
-            <img src="{% static 'img/camaro_card.png' %}" alt="" class="card-img-top" />
-            <div class="card-body">
-              <h4 class="card-text">Покатушки на Chevrolet Camaro</h4>
-              <div class="card-text">Мы предлагаем вам отправиться в увлекательное путешествие по живописным дорогам нашей области на вашем любимом Chevrolet Camaro</div>
-            </div>
-            <div class="card-footer">
-              <div class="d-flex justify-content-between align-items-center mt 3">
-                <small class="text-muted">22.10.2023</small>
-                <a href="#" class="btn btn btn-outline-secondary">Подробнее</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 d-flex">
-          <div class="card mb-4">
-            <img src="{% static 'img/bmw_family_card.jpg' %}" alt="" class="card-img-top" />
-            <div class="card-body">
-              <h4 class="card-text">Пополнение в семействе BMW</h4>
-              <div class="card-text">Однажды, в чудесном городе Мюнхен, в семействе известных и любимых автомобилей BMW произошло пополнение. Это был...</div>
-            </div>
-            <div class="card-footer">
-              <div class="d-flex justify-content-between align-items-center mt 3">
-                <small class="text-muted">22.10.2023</small>
-                <a href="#" class="btn btn btn-outline-secondary">Подробнее</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 d-flex">
-          <div class="card mb-4">
-            <img src="{% static 'img/ford_mustang_card.jpg' %}" alt="" class="card-img-top" />
-            <div class="card-body">
-              <h4 class="card-text">История Ford Mustang Cobra</h4>
-              <div class="card-text">Зайдём издалека. В 1993 году Ford Mustang Cobra стал самым быстрым серийным автомобилем в мире. Этот автомобиль был создан на базе легендарного Mustang...</div>
-            </div>
-            <div class="card-footer">
-              <div class="d-flex justify-content-between align-items-center mt 3">
-                <small class="text-muted">22.10.2023</small>
-                <a href="#" class="btn btn btn-outline-secondary">Подробнее</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 d-flex">
-          <div class="card mb-4">
-            <img src="{% static 'img/Mercedes_Benz_SLS_AMG_Tuning_card.jpg' %}" alt="" class="card-img-top" />
-            <div class="card-body">
-              <h4 class="card-text">Маленькая история Mercedes SLS AMG Tuning</h4>
-              <div class="card-text">Тюнеры начали работу с двигателя автомобиля. Они увеличили его мощность, установив новые турбины и перепрошив компьютер автомобиля. В результате мощность двигателя выросла до 700 лошадиных сил, что сделало Mercedes SLS AMG еще быстрее...</div>
-            </div>
-            <div class="card-footer">
-              <div class="d-flex justify-content-between align-items-center mt 3">
-                <small class="text-muted">22.10.2023</small>
-                <a href="#" class="btn btn btn-outline-secondary">Подробнее</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </section>
 {% endblock %}
 
 {% block pagination %}
-  <nav aria-label="Paginate me">
-    <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">Предыдущая</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">1</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">2</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">3</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">Следующая</a>
-      </li>
-    </ul>
-  </nav>
-  <br />
+  <section class="my-pagination">
+    <nav aria-label="Paginate me">
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Предыдущая</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Предыдущая</a>
+          </li>
+        {% endif %}
+        {% for page_number in page_obj.paginator.page_range %}
+          {% if page_number == page_obj.number %}
+            <li class="page-item active">
+              <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+          {% else %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Следующая</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </section>
 {% endblock %}
