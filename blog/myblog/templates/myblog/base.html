@@ -13,6 +13,7 @@
 
     <!-- INCLUDE CSS -->
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   </head>
 
   <body>
@@ -37,7 +38,7 @@
 
     <!-- ФУТЕР ВЕЗДЕ ОДИНАКОВЫЙ -->
     {% include 'myblog/block/footer.html' %}
-    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+    
     <script src="{% static 'js/script.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   </body>
